@@ -1,0 +1,23 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+    Persons
+{% endblock %}
+
+{% block content %}
+    <div id="sidebar">
+        <h3></h3>
+    </div>
+    <div id="main" class="dataTable">
+        <br>
+        <h3>Persons</h3>
+        <br>
+        {% for person in person_list %}
+            <div class="item">
+                <a >{{ person.first_name }} {{ person.last_name }}</a><br>
+            <br>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

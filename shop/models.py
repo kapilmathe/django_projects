@@ -42,3 +42,22 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
+
+
+class Person(models.Model):
+    id = models.BigIntegerField(auto_created=True, primary_key=True)
+    first_name = models.CharField(max_length=512, db_index=True)
+    middle_name = models.CharField(max_length=512, db_index=True)
+    last_name = models.CharField(max_length=512, db_index=True)
+    age = models.IntegerField(null=False)
+    weight = models.DecimalField(decimal_places=2, max_digits=5)
+    is_married = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return "{0} {1} {2}".format(self.first_name, self.middle_name, self.last_name)
+
+    def get_absolute_url(self):
+        return reverse('shop:person', args=[self.id])
+
